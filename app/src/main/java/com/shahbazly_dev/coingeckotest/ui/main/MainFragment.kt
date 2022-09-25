@@ -10,6 +10,7 @@ import com.shahbazly_dev.coingeckotest.databinding.MainFragmentBinding
 import com.shahbazly_dev.coingeckotest.ui.main.adapter.CoinAdapter
 import com.shahbazly_dev.coingeckotest.base.util.launchAndRepeatWithViewLifecycle
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
@@ -22,11 +23,22 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         with(viewBinding.coinsRecycler) {
-            adapter = CoinAdapter("USD")
+            adapter = CoinAdapter(viewModel.currency.value ?: "USD")
         }
 
         launchAndRepeatWithViewLifecycle {
-            viewModel.coins.collect(adapter::submitData)
+            viewModel.coins.collectLatest { pagingData ->
+                adapter.submitData(pagingData)
+            }
+        }
+
+        viewBinding.eurChip.setOnClickListener {
+            viewModel.setCurrency("EUR")
+            adapter.currency = "EUR"
+        }
+        viewBinding.usdChip.setOnClickListener {
+            viewModel.setCurrency("USD")
+            adapter.currency = "USD"
         }
     }
 
