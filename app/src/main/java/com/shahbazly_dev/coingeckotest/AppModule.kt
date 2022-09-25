@@ -1,23 +1,33 @@
 package com.shahbazly_dev.coingeckotest
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.shahbazly_dev.coingeckotest.ui.data.CoinGeckoService
 import com.shahbazly_dev.coingeckotest.ui.utils.Constants.BASE_URL
 import com.shahbazly_dev.coingeckotest.ui.utils.Constants.CONNECTION_TIMEOUT_SECONDS
+import com.shahbazly_dev.coingeckotest.ui.utils.Constants.MEDIA_TYPE
 import com.shahbazly_dev.coingeckotest.ui.utils.Constants.READ_TIMEOUT_SECONDS
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideJson(): Json = Json {
+        ignoreUnknownKeys = true
+    }
 
     @Provides
     @Singleton
@@ -37,11 +47,12 @@ object AppModule {
         return builder.build()
     }
 
+    @OptIn(ExperimentalSerializationApi::class)
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun provideRetrofit(json: Json, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(json.asConverterFactory(MEDIA_TYPE.toMediaType()))
         .client(okHttpClient)
         .build()
 
