@@ -11,6 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.shahbazly_dev.coingeckotest.R
 import com.shahbazly_dev.coingeckotest.base.util.launchAndRepeatWithViewLifecycle
 import com.shahbazly_dev.coingeckotest.databinding.MainFragmentBinding
+import com.shahbazly_dev.coingeckotest.domain.Coin
 import com.shahbazly_dev.coingeckotest.ui.details.DetailsFragment
 import com.shahbazly_dev.coingeckotest.ui.main.adapter.CoinAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +29,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         with(viewBinding.coinsRecycler) {
             adapter = CoinAdapter(viewModel.currency.value) { coin ->
-                navigateToCoinDetails(coin.id)
+                navigateToCoinDetails(coin)
             }
         }
 
@@ -57,8 +58,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
     }
 
-    private fun navigateToCoinDetails(id: String) = parentFragmentManager.commit {
-        replace(R.id.container, DetailsFragment.newInstance(id), DetailsFragment.TAG)
+    private fun navigateToCoinDetails(coin: Coin) = parentFragmentManager.commit {
+        replace(R.id.container, DetailsFragment.newInstance(coin), DetailsFragment.TAG)
         setReorderingAllowed(true)
         addToBackStack(DetailsFragment.TAG)
     }
