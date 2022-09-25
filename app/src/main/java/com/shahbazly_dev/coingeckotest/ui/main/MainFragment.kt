@@ -14,10 +14,16 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val viewBinding: MainFragmentBinding by viewBinding()
     private val viewModel: MainViewModel by viewModels()
+    private val adapter get() = viewBinding.coinsRecycler.adapter as CoinAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding.message.text = viewModel.messageText
+
+        with(viewBinding.coinsRecycler) {
+            adapter = CoinAdapter()
+        }
+
+        viewModel.coins.observe(viewLifecycleOwner, adapter::submitList)
     }
 
 }
