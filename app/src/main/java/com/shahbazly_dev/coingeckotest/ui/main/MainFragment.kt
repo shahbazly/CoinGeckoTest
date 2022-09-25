@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.shahbazly_dev.coingeckotest.R
 import com.shahbazly_dev.coingeckotest.base.util.launchAndRepeatWithViewLifecycle
 import com.shahbazly_dev.coingeckotest.databinding.MainFragmentBinding
+import com.shahbazly_dev.coingeckotest.ui.details.DetailsFragment
 import com.shahbazly_dev.coingeckotest.ui.main.adapter.CoinAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -25,7 +27,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         with(viewBinding.coinsRecycler) {
-            adapter = CoinAdapter(viewModel.currency.value)
+            adapter = CoinAdapter(viewModel.currency.value) { coin ->
+                navigateToCoinDetails(coin.id)
+            }
         }
 
         adapter.addLoadStateListener { loadStates ->
@@ -51,6 +55,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         viewBinding.retryButton.setOnClickListener {
             adapter.retry()
         }
+    }
+
+    private fun navigateToCoinDetails(id: String) = parentFragmentManager.commit {
+        replace(R.id.container, DetailsFragment.newInstance(id), DetailsFragment.TAG)
+        setReorderingAllowed(true)
+        addToBackStack(DetailsFragment.TAG)
     }
 
     companion object {

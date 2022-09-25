@@ -25,9 +25,9 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
         const val TAG = "DETAILS_FRAGMENT"
         const val COIN_ID_KEY = "KEY_COIN_ID"
 
-        fun newInstance() = DetailsFragment().apply {
+        fun newInstance(id: String) = DetailsFragment().apply {
             arguments = Bundle().apply {
-                putInt(COIN_ID_KEY, id)
+                putString(COIN_ID_KEY, id)
             }
         }
     }

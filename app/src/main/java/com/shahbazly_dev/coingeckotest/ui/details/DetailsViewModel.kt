@@ -7,5 +7,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(savedStateHandle: SavedStateHandle) : ViewModel() {
-    val id = savedStateHandle.get<Int>(DetailsFragment.COIN_ID_KEY)
+    val id = savedStateHandle.get<String>(DetailsFragment.COIN_ID_KEY)
 }

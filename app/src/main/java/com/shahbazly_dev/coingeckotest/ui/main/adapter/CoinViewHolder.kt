@@ -12,8 +12,15 @@ import com.shahbazly_dev.coingeckotest.R
 import com.shahbazly_dev.coingeckotest.databinding.CoinItemBinding
 import com.shahbazly_dev.coingeckotest.domain.Coin
 
-class CoinViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class CoinViewHolder(view: View, clickAtPosition: (Int) -> Unit) : RecyclerView.ViewHolder(view) {
     private val viewBinding: CoinItemBinding by viewBinding()
+
+    init {
+        viewBinding.coinContainer.setOnClickListener {
+            val adapterPos = bindingAdapterPosition
+            if (adapterPos != RecyclerView.NO_POSITION) clickAtPosition(adapterPos)
+        }
+    }
 
     fun onBind(coin: Coin, currency: String) = with(viewBinding) {
         coinImageView.load(coin.image) {
