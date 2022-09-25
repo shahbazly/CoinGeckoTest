@@ -1,10 +1,10 @@
-package com.shahbazly_dev.coingeckotest.ui.data
+package com.shahbazly_dev.coingeckotest.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.shahbazly_dev.coingeckotest.ui.domain.Coin
-import com.shahbazly_dev.coingeckotest.ui.utils.Constants.PAGE_SIZE
-import com.shahbazly_dev.coingeckotest.ui.utils.Constants.STARTING_PAGE_INDEX
+import com.shahbazly_dev.coingeckotest.domain.Coin
+import com.shahbazly_dev.coingeckotest.base.util.Constants.PAGE_SIZE
+import com.shahbazly_dev.coingeckotest.base.util.Constants.STARTING_PAGE_INDEX
 
 class CoinsPagingSource(
     private val currency: String,

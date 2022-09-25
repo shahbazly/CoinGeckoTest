@@ -1,11 +1,11 @@
 package com.shahbazly_dev.coingeckotest
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.shahbazly_dev.coingeckotest.ui.data.CoinGeckoService
-import com.shahbazly_dev.coingeckotest.ui.utils.Constants.BASE_URL
-import com.shahbazly_dev.coingeckotest.ui.utils.Constants.CONNECTION_TIMEOUT_SECONDS
-import com.shahbazly_dev.coingeckotest.ui.utils.Constants.MEDIA_TYPE
-import com.shahbazly_dev.coingeckotest.ui.utils.Constants.READ_TIMEOUT_SECONDS
+import com.shahbazly_dev.coingeckotest.data.CoinGeckoService
+import com.shahbazly_dev.coingeckotest.base.util.Constants.BASE_URL
+import com.shahbazly_dev.coingeckotest.base.util.Constants.CONNECTION_TIMEOUT_SECONDS
+import com.shahbazly_dev.coingeckotest.base.util.Constants.MEDIA_TYPE
+import com.shahbazly_dev.coingeckotest.base.util.Constants.READ_TIMEOUT_SECONDS
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

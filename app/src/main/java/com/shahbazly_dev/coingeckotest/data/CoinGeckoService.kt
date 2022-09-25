@@ -1,6 +1,6 @@
-package com.shahbazly_dev.coingeckotest.ui.data
+package com.shahbazly_dev.coingeckotest.data
 
-import com.shahbazly_dev.coingeckotest.ui.domain.Coin
+import com.shahbazly_dev.coingeckotest.domain.Coin
 import retrofit2.http.GET
 import retrofit2.http.Query
 

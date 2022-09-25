@@ -1,4 +1,4 @@
-package com.shahbazly_dev.coingeckotest.ui.utils
+package com.shahbazly_dev.coingeckotest.base.util
 
 object Constants {
     const val BASE_URL = "https://api.coingecko.com/"

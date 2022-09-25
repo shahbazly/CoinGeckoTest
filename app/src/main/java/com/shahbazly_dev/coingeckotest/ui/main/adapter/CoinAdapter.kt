@@ -3,7 +3,7 @@ package com.shahbazly_dev.coingeckotest.ui.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import com.shahbazly_dev.coingeckotest.ui.domain.Coin
+import com.shahbazly_dev.coingeckotest.domain.Coin
 
 class CoinAdapter(var currency: String) : PagingDataAdapter<Coin, CoinViewHolder>(DiffUtil()) {
 

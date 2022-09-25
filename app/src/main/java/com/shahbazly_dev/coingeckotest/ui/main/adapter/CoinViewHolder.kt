@@ -10,7 +10,7 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import com.shahbazly_dev.coingeckotest.R
 import com.shahbazly_dev.coingeckotest.databinding.CoinItemBinding
-import com.shahbazly_dev.coingeckotest.ui.domain.Coin
+import com.shahbazly_dev.coingeckotest.domain.Coin
 
 class CoinViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val viewBinding: CoinItemBinding by viewBinding()

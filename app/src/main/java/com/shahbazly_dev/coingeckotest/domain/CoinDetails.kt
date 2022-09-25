@@ -1,4 +1,4 @@
-package com.shahbazly_dev.coingeckotest.ui.domain
+package com.shahbazly_dev.coingeckotest.domain
 
 import kotlinx.serialization.Serializable
 

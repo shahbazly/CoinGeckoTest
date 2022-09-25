@@ -8,7 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.shahbazly_dev.coingeckotest.R
 import com.shahbazly_dev.coingeckotest.databinding.MainFragmentBinding
 import com.shahbazly_dev.coingeckotest.ui.main.adapter.CoinAdapter
-import com.shahbazly_dev.coingeckotest.ui.utils.launchAndRepeatWithViewLifecycle
+import com.shahbazly_dev.coingeckotest.base.util.launchAndRepeatWithViewLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

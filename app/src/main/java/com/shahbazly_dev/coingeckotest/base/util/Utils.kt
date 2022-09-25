@@ -1,4 +1,4 @@
-package com.shahbazly_dev.coingeckotest.ui.utils
+package com.shahbazly_dev.coingeckotest.base.util
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
