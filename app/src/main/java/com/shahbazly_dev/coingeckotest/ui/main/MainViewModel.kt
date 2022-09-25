@@ -8,6 +8,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.shahbazly_dev.coingeckotest.base.util.Constants.PAGE_SIZE
 import com.shahbazly_dev.coingeckotest.data.CoinGeckoService
 import com.shahbazly_dev.coingeckotest.data.CoinsPagingSource
 import com.shahbazly_dev.coingeckotest.domain.Coin
@@ -28,7 +29,7 @@ class MainViewModel @Inject constructor(coinGeckoService: CoinGeckoService) : Vi
         coins = currency.asFlow()
             .flatMapLatest {
                 Pager(
-                    PagingConfig(pageSize = 10)
+                    PagingConfig(pageSize = PAGE_SIZE)
                 ) { CoinsPagingSource(currency = it, coinGeckoService) }
                     .flow
             }

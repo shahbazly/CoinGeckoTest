@@ -2,8 +2,10 @@ package com.shahbazly_dev.coingeckotest.ui.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.shahbazly_dev.coingeckotest.R
 import com.shahbazly_dev.coingeckotest.databinding.MainFragmentBinding
@@ -24,6 +26,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         with(viewBinding.coinsRecycler) {
             adapter = CoinAdapter(viewModel.currency.value ?: "USD")
+        }
+
+        adapter.addLoadStateListener { loadStates ->
+            viewBinding.coinsRecycler.isVisible = loadStates.refresh is LoadState.NotLoading
+            viewBinding.progressIndicator.isVisible = loadStates.refresh is LoadState.Loading
         }
 
         launchAndRepeatWithViewLifecycle {
