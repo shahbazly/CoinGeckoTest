@@ -1,7 +1,9 @@
 package com.shahbazly_dev.coingeckotest.data
 
 import com.shahbazly_dev.coingeckotest.domain.Coin
+import com.shahbazly_dev.coingeckotest.domain.CoinDetails
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CoinGeckoService {
@@ -12,4 +14,9 @@ interface CoinGeckoService {
         @Query("page") page: Int,
         @Query("per_page") resultsPerPage: Int
     ): List<Coin>
+
+    @GET("api/v3/coins/{id}")
+    suspend fun coinDetails(
+        @Path("id") id: String
+    ): CoinDetails
 }
