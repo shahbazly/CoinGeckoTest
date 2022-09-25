@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.shahbazly_dev.coingeckotest.R
 import com.shahbazly_dev.coingeckotest.databinding.MainFragmentBinding
+import com.shahbazly_dev.coingeckotest.ui.main.adapter.CoinAdapter
 import com.shahbazly_dev.coingeckotest.ui.utils.launchAndRepeatWithViewLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +22,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         with(viewBinding.coinsRecycler) {
-            adapter = CoinAdapter()
+            adapter = CoinAdapter("USD")
         }
 
         launchAndRepeatWithViewLifecycle {

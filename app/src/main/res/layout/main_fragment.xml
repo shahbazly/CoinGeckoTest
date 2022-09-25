@@ -38,6 +38,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@string/src_main_toolbar_text"
+                android:fontFamily="@font/roboto_medium"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"

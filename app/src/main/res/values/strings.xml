@@ -5,4 +5,11 @@
 
     <string name="src_chip_currency_eur_text">EUR</string>
     <string name="src_chip_currency_usd_text">USD</string>
+
+    <string name="euroCurrencyPrice">€ %,.2f</string>
+    <string name="dollarCurrencyPrice">$ %,.2f</string>
+    <string name="defaultCurrencyPrice">%,.2f</string>
+
+    <string name="positiveChangePercentage">"+ %.2f%%"</string>
+    <string name="negativeChangePercentage">%.2f%%</string>
 </resources>
