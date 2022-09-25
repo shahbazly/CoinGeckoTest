@@ -17,6 +17,40 @@
         tools:itemCount="12"
         tools:listitem="@layout/coin_item" />
 
+    <LinearLayout
+        android:id="@+id/errorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_coin"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textSize="14sp"
+            android:text="@string/src_list_loading_error_text" />
+
+        <Button
+            android:id="@+id/retryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/src_try_again_text"/>
+
+    </LinearLayout>
+
     <ProgressBar
         android:id="@+id/progressIndicator"
         style="?android:indeterminateProgressStyle"

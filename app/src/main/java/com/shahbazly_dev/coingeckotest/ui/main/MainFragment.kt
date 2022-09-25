@@ -8,9 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.shahbazly_dev.coingeckotest.R
+import com.shahbazly_dev.coingeckotest.base.util.launchAndRepeatWithViewLifecycle
 import com.shahbazly_dev.coingeckotest.databinding.MainFragmentBinding
 import com.shahbazly_dev.coingeckotest.ui.main.adapter.CoinAdapter
-import com.shahbazly_dev.coingeckotest.base.util.launchAndRepeatWithViewLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -25,28 +25,37 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         with(viewBinding.coinsRecycler) {
-            adapter = CoinAdapter(viewModel.currency.value ?: "USD")
+            adapter = CoinAdapter(viewModel.currency.value)
         }
 
         adapter.addLoadStateListener { loadStates ->
             viewBinding.coinsRecycler.isVisible = loadStates.refresh is LoadState.NotLoading
             viewBinding.progressIndicator.isVisible = loadStates.refresh is LoadState.Loading
+            viewBinding.errorView.isVisible = loadStates.refresh is LoadState.Error
         }
 
         launchAndRepeatWithViewLifecycle {
-            viewModel.coins.collectLatest { pagingData ->
-                adapter.submitData(pagingData)
-            }
+            viewModel.coins.collectLatest(adapter::submitData)
         }
 
         viewBinding.eurChip.setOnClickListener {
-            viewModel.setCurrency("EUR")
-            adapter.currency = "EUR"
+            viewModel.setCurrency(eurCurrencyCode)
+            adapter.currency = eurCurrencyCode
         }
+
         viewBinding.usdChip.setOnClickListener {
-            viewModel.setCurrency("USD")
-            adapter.currency = "USD"
+            viewModel.setCurrency(usdCurrencyCode)
+            adapter.currency = usdCurrencyCode
         }
+
+        viewBinding.retryButton.setOnClickListener {
+            adapter.retry()
+        }
+    }
+
+    companion object {
+        const val usdCurrencyCode = "USD"
+        const val eurCurrencyCode = "EUR"
     }
 
 }

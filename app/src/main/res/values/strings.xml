@@ -2,6 +2,8 @@
     <string name="app_name">CoinGeckoTest</string>
 
     <string name="src_main_toolbar_text">Список криптовалют</string>
+    <string name="src_list_loading_error_text">Случилась какая-то ошибка :(\nПопробуем снова?</string>
+    <string name="src_try_again_text">Попробовать</string>
 
     <string name="src_chip_currency_eur_text">EUR</string>
     <string name="src_chip_currency_usd_text">USD</string>
