@@ -7,4 +7,7 @@ object Constants {
     const val COINS_LIMIT = 20
     const val CONNECTION_TIMEOUT_SECONDS = 5L
     const val READ_TIMEOUT_SECONDS = 5L
+
+    const val PAGE_SIZE = 10
+    const val STARTING_PAGE_INDEX = 1
 }

@@ -9,6 +9,7 @@ interface CoinGeckoService {
     @GET("api/v3/coins/markets")
     suspend fun listCoinsMarkets(
         @Query("vs_currency") targetCurrency: String,
+        @Query("page") page: Int,
         @Query("per_page") resultsPerPage: Int
     ): List<Coin>
 }
