@@ -16,6 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_back"
+            android:background="@color/toolbarColor"
+            app:navigationIconTint="@color/toolbarTextColor"
+            app:titleTextColor="@color/toolbarTextColor"
             tools:title="Bitcoin" />
 
     </com.google.android.material.appbar.AppBarLayout>

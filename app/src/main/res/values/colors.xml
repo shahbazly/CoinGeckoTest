@@ -10,6 +10,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="primaryColor">#FF9F00</color>
+
+    <color name="toolbarTextColor">#FF000000</color>
+    <color name="toolbarColor">#FFFFFFFF</color>
     <color name="statusBarColor">#E8E8E8</color>
 
     <color name="gray_500">#939393</color>
