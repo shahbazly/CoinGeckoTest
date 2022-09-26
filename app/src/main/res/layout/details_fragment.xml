@@ -20,13 +20,6 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <Button
-                android:id="@+id/retryButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/src_try_again_text" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +35,13 @@
                 android:text="@string/src_list_loading_error_text"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/retryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/src_try_again_text" />
 
         </LinearLayout>
 
