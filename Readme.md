@@ -2,6 +2,12 @@
 Тестовое задание для стажировки "Нашĸодим - Android" от MobileUp.
 Список криптовалют и отдельный эĸран с чуть более подробной информацией о ĸаждой монете.
 
+
+## Экраны
+| [Список монет](/app/src/main/java/com/shahbazly_dev/coingeckotest/ui/main/) | [Детальная информация о монете](/app/src/main/java/com/shahbazly_dev/coingeckotest/ui/details/) |
+|-----------|---------|
+| <video src='https://user-images.githubusercontent.com/8513082/192254753-0772bc13-d7dc-4601-a48d-c1abf06c3013.mov' width=360/> | <video src='https://user-images.githubusercontent.com/8513082/192254808-313ed0a5-8627-4b50-b087-2dca986256f9.mov' width=360/>  |
+
 ## Декомпозиция
 | № | Задача                                        | Требуемое время |
 | - | ----------------------------------------------|:---------------:|
