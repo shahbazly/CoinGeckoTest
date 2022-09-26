@@ -59,7 +59,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun navigateToCoinDetails(coin: Coin) = parentFragmentManager.commit {
-        replace(R.id.container, DetailsFragment.newInstance(coin), DetailsFragment.TAG)
+        setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+        replace(
+            R.id.container,
+            DetailsFragment.newInstance(coin),
+            DetailsFragment.TAG
+        )
         setReorderingAllowed(true)
         addToBackStack(DetailsFragment.TAG)
     }
