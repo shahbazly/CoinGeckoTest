@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor(coinGeckoService: CoinGeckoService) : Vi
 
     init {
         coins = currency.flatMapLatest {
-            Pager(PagingConfig(pageSize = PAGE_SIZE)) {
+            Pager(PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false)) {
                 CoinsPagingSource(currency = it, coinGeckoService)
             }.flow
         }.cachedIn(viewModelScope)

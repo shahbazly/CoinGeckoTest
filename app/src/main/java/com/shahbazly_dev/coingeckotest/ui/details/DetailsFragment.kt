@@ -3,13 +3,17 @@ package com.shahbazly_dev.coingeckotest.ui.details
 import android.os.Bundle
 import android.text.Html
 import android.text.SpannableString
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.google.android.material.appbar.MaterialToolbar
 import com.shahbazly_dev.coingeckotest.R
 import com.shahbazly_dev.coingeckotest.base.util.launchAndRepeatWithViewLifecycle
 import com.shahbazly_dev.coingeckotest.databinding.DetailsFragmentBinding
@@ -21,8 +25,27 @@ import kotlinx.coroutines.flow.collectLatest
 @AndroidEntryPoint
 class DetailsFragment : Fragment(R.layout.details_fragment) {
 
-    private val viewBinding: DetailsFragmentBinding by viewBinding()
+    private val viewBinding: DetailsFragmentBinding by viewBinding(CreateMethod.INFLATE)
     private val viewModel: DetailsViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val toolbar = activity?.findViewById<MaterialToolbar>(R.id.topAppBar)
+        toolbar?.let {
+            it.title = viewModel.selectedCoin.name
+        }
+
+        with(viewBinding) {
+            retryButton.setOnClickListener {
+                viewModel.fetchDetails()
+            }
+        }
+
+        return viewBinding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,17 +57,6 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
                 } else {
                     setLoadState(uiState)
                 }
-            }
-        }
-
-        with(viewBinding) {
-            topAppBar.title = viewModel.selectedCoin.name
-
-            topAppBar.setNavigationOnClickListener {
-                parentFragmentManager.popBackStack()
-            }
-            retryButton.setOnClickListener {
-                viewModel.fetchDetails()
             }
         }
     }
